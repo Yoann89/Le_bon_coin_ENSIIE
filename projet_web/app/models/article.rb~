@@ -1,0 +1,4 @@
+class Article < ActiveRecord::Base
+	validates :nom, presence: true
+	validates :emal, presence: true
+end
