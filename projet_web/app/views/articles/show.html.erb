@@ -1,2 +1,39 @@
-<h1>Articles#show</h1>
-<p>Find me in app/views/articles/show.html.erb</p>
+
+
+	<div class="jumbotron">
+		<div class="container">
+		</div>
+	</div>
+
+
+	<div class="container">
+
+		<div class="row">
+				<h2 style="margin-right:50px; margin-left:50px">
+					<FONT size="3pt" >
+				<% if user_signed_in? %>
+				Logged in as <strong><%= current_user.email %></strong>.
+				<%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+				<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+				<% else %>
+				<%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+				<%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+				<% end %>
+					</FONT>
+			</h2>
+				<h6 align="center" >
+					<div style="border: 2px solid rgb(0,0,200)">
+
+						<p align="center"><font color="black">Annonce de <%= @article.nom %><%= @article.email %></p>
+						<p align="center">
+							<font color="black"><%= @article.titre %></font>
+						</p>
+						<p align="center">
+							<font color="black"><%= @article.texte %></font>
+						</p>
+						</br>
+					</div>
+				</h6>
+		</div>
+
+	</div>

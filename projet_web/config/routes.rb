@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
-  get 'articles/index'
+	devise_for :users
+	resources :articles
+	resources :corpus
+  resources :promo
 
-  get 'articles/show'
+	get "/" => "aboutus#home"
+	get "/help" => "aboutus#show"
+	get "/about_us" => "aboutus#index"
 
-  get 'articles/index'
-
-  get 'articles/show'
-
+ 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

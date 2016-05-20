@@ -1,0 +1,15 @@
+class AboutusController < ApplicationController
+	def index
+	end
+
+	def home
+		redirect_to "/articles"
+	end
+	
+	def show
+	end
+
+
+end 
+
+

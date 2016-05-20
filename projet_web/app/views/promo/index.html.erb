@@ -1,0 +1,68 @@
+
+	<div class="jumbotron">
+		<div class="container">
+		</div>
+	</div>
+
+
+	<div class="container" >
+		<div class="row" style="margin-right:20%; margin-left:20%">
+
+			<a href="/articles">
+				<font color="blue" size="3pt">Back</font>
+			</a>
+
+			<% if user_signed_in? %>
+
+			<% if user_signed_in? %>
+			<div align="right">
+
+				<%= form_tag("/promo/", method: "get") do %>
+				</br>
+					<%= label_tag(:nom1, "nom") %>
+					<%= text_field_tag(:nom1) %>
+				</br>
+					<%= label_tag(:prenom1, "prenom") %>
+					<%= text_field_tag(:prenom1) %>
+				</br>
+					<%= label_tag(:promo1, "promo") %>
+					<%= text_field_tag(:promo1) %>
+				</br>
+					<%= label_tag(:np1, "phone number") %>
+					<%= text_field_tag(:np1) %>
+				</br>
+					<%= submit_tag("Add") %>
+
+				</div>
+				<% end %>
+
+			<% end %>
+
+
+			<% if @promos.count > 0 %>
+				<% @promos.reverse_order.each do |promo| %>
+					<div style="border: 2px solid rgb(0,0,200); margin-right:50px; margin-left:50px" >
+
+						<h1  align="center">
+							<font color="black">
+								<h1 align="left">Nom:&nbsp<%= promo.nom %></h1>
+								<h1 align="left">Prenom:&nbsp<%= promo.prenom %></h1>
+								<h1 align="left">Email:&nbsp<%= promo.email %></h1>
+								<h1 align="left">Promotion:&nbsp<%= promo.promotion %></h1>
+								<h1 align="left">Phone number:&nbsp<%= promo.phone_number %></h1>
+							</font>
+						</h1>
+
+					</div>
+					</br>
+				<% end %>
+			<% else %>
+			<hr></hr>
+			<h1 align="center" size="3px">Remplir le formulaire</h1>
+			<% end %>
+
+			<% else %>
+			Please connect you
+			<% end %>
+		</div>
+	</div>

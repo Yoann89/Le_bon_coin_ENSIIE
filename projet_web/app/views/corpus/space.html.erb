@@ -1,0 +1,57 @@
+
+	<div class="jumbotron">
+		<div class="container">
+		</div>
+	</div>
+
+
+	<div class="container" >
+		<div class="row" style="margin-right:20%; margin-left:20%">
+			<% if user_signed_in? %>
+			<h2 >
+
+				<FONT size="3pt" >
+
+					<% if user_signed_in? %>
+					Logged in as <strong><%= current_user.email %></strong>.
+					<%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+					<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+					<% else %>
+					<%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+					<%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+					<% end %>
+
+				</FONT>
+
+			</h2>
+
+			<p>Ajout message</p>
+			<h6 align="left" >
+
+				<%= form_tag("/corpus/", method: "get") do %>
+				  <%= text_field_tag(:add) %>
+				  <%= submit_tag("message") %>
+				<% end %>
+
+			</h6>
+
+			<% @corpus.reverse_order.each do |corpu| %>
+				<div style="border: 2px solid rgb(200,200,200); background-color: silver" >
+					<p  align="left" >
+						<font color="black" size="3pt">message:<%= corpu.body %></font>
+						</br>
+						<font color="black" size="3pt">date:<%= corpu.created_at %>(HEURE: PARIS)</font>
+					</p>
+				</div>
+				</br>
+			<% end %>
+
+			<% else %>
+			<p align="center">Please, connect you</p>
+			<% end %>
+		</div>
+
+
+	</div>
+
+

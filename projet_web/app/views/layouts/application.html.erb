@@ -1,15 +1,62 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>ProjetWeb</title>
-	<h>Titre du site</h>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
+	<head>
+
+	  <title>Le Bon Coin de l'ENSIIE</title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<!-- Commentaire
+		<section class="loginform cf">
+		<form name="login" action="/login" method="post" accept-charset="utf-8">
+
+		   <table><tr>
+					<td align="left" width="1000">LE BON COIN DE L'ENSIIE</td>
+    		     	<td align="right" width="2000">
+						<label for="usermail" ></label>
+	    		      	<input type="email" name="usermail" placeholder="name@email.com" required></li>
+    			      	<label for="password" ></label>
+    			      	<input type="password" name="password" placeholder="password" required></li>
+    			      	<input type="submit" value="Connexion">
+						<input type="button" value="Inscription">
+					</td>
+			   </tr></table>
+
+		</from>
+--> 
+
+			<nav class="navbar navbar-default navbar-fixed-top">
+			  <div class="container">
+				<a class="navbar-brand" href="/articles">Le Bon coin de l'ENSIIE</a>
+				<ul class="nav navbar-nav">
+					<li class=""><a href="/help">Help <span class="sr-only">(current)</span></a></li>
+					<li class=""><a href="/about_us">About Us <span class="sr-only">(current)</span></a></li>
+				</ul>
+			  </div>
+			</nav>
+
+		  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		  <%= csrf_meta_tags %>
+
+
+	</head>
+
 <body>
-
-<%# yield %>
-
+	<div>
+		<%= yield %>
+	</div>
 </body>
+
+	<footer class="footer">
+		<hr></hr>
+		<p class="text-muted" align="center">2016 Le Bon Coin de l'ENSIIE Company, Inc</p>
+	</footer>
 </html>
+
+

@@ -1,0 +1,113 @@
+
+	<div class="jumbotron">
+		<div class="container">
+		</div>
+	</div>
+
+
+	<div class="container" >
+		<div class="row" style="margin-right:20%; margin-left:20%">
+
+			<% if user_signed_in? %>
+			<h2 >
+				<FONT size="3pt" >
+
+					<% if user_signed_in? %>
+					Logged in as <strong><%= current_user.email %></strong>.
+					<%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+					<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+					<a href="/articles">
+						<font color="blue" size="3pt">| Back</font>
+					</a>
+					<a href="/promo">
+						<font color="blue" size="3pt">| MyProfile</font>
+					</a>
+					<% else %>
+					<%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+					<%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+					<% end %>
+
+				</FONT>
+			</h2>
+				</br>
+					<%= form_tag("/corpus/", method: "get") do %>
+					<%= label_tag(:enlever, "enlever annoncer en entrant son texte") %>
+					<%= text_field_tag(:enlever) %>
+					<%= submit_tag("enlever l'annonce") %>
+					<% end %>
+					<hr></hr>
+				</br>
+				<p><strong>Ajout annonce</strong></p>
+				<h6 align="left" >
+
+					<%= form_tag("/corpus/", method: "get") do %>
+						<%= label_tag(:titre, "titre") %> &nbsp&nbsp&nbsp
+						<%= text_field_tag(:titre) %>
+					</br>
+						<%= label_tag(:texte, "texte") %>&nbsp&nbsp
+						<%= text_field_tag(:texte) %>
+					</br>
+						<%= label_tag(:image, "photo") %>&nbsp
+						<%= text_field_tag(:image) %>
+					</br>
+						<%= label_tag(:prix, "prix") %>&nbsp&nbsp&nbsp&nbsp
+						<%= text_field_tag(:prix) %>
+					</br>
+						<%= submit_tag("creer la nouvelle annonce") %>
+					</br>
+					<% end %>
+				<hr></hr>
+				</h6>
+
+				<p><strong>Modifier annonce</strong></p>
+				<h6 align="left" >
+
+					<%= form_tag("/corpus/", method: "get") do %>
+
+					</br>
+						<%= label_tag(:texte_ref, "id de l'annonce dont le prix est à modifier") %>
+						<%= text_field_tag(:texte_ref) %>
+						<%= label_tag(:prix_modif, "Modifier le prix") %>
+						<%= text_field_tag(:prix_modif) %>
+					</br>
+						<%= submit_tag("modifier l'annonce") %>
+					</br>
+					<% end %>
+
+				</h6>
+
+
+			</br>
+				<% @articles.reverse_order.each do |articles| %>
+					<div style="border: 2px solid rgb(200,200,200); background-color: silver" >
+						<p align="center" >
+							<font color="black" size="3pt"><%= articles.titre %></font>
+							</br>
+							<font color="black" size="2pt">id:<%= articles.id %></font>
+						
+							<h2 align="center">
+								<a href="<%= articles.password %>">
+								 	<img src="<%= articles.password %>" width="300px" alt="Image no found"/>
+								</a>
+							</h2>
+							</br>
+							<font color="black" size="3pt"><%= articles.texte %></font>
+							</br>
+							<h2 align="right">
+								<font color="blue" size="3px">prix:<%= articles.numero %>$</font>
+							</h2>
+							<font color="black" size="3pt">date:<%= articles.created_at %>(HEURE: PARIS)</font>
+						</p>
+					</div>
+					</br>
+				<% end %>
+
+			<% else %>
+			<p align="center">Please, connect you</p>
+			<% end %>
+		</div>
+
+
+	</div>
+
+

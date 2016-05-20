@@ -1,3 +1,94 @@
-<h1>Bonjour, Rails!</h1>
-<h1>Articles#index</h1>
-<p>Find me in app/views/articles/index.html.erb</p>
+
+	<div class="jumbotron">
+		<div class="container">
+		</div>
+	</div>
+
+
+	<div class="container">
+
+		<div class="row">
+			<h2 style="margin-right:50px; margin-left:50px">
+
+				<FONT size="3pt" >
+					<% if user_signed_in? %>
+					Logged in as <strong><%= current_user.email %></strong>.
+					<%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+					<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+					<a href="/corpus">
+						<font color="blue" size="3pt">| MySpace</font>
+					</a>
+					<a href="/promo">
+						<font color="blue" size="3pt">| MyProfile</font>
+					</a>
+
+					<% else %>
+					<%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+					<%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+					<% end %>
+
+					
+				</FONT>
+
+			</h2>
+
+
+			<h1 style="margin-right:50px; margin-left:50px"><font color="black">Les annonces</font></h1>
+			<p style="margin-right:50px; margin-left:50px"><font color="black">Connectez vous pour voir la description.</font></p>
+
+				<h6 align="center" >
+				<%= form_tag("/articles/", method: "get") do %>
+				  <%= text_field_tag(:recherche) %>
+				  <%= submit_tag("Search") %>
+				<% end %>
+				</h6>
+
+			<% if @articles.count > 0 %>
+				<% @articles.each do |article| %>
+					<div style="border: 2px solid rgb(0,0,200); margin-right:50px; margin-left:50px" >
+
+						<h1  align="center">
+							<font color="black"><%= article.titre %></font>
+						</h1>
+						<h2 align="center">
+							<a href="<%= article.password %>">
+							 	<img src="<%= article.password %>" width="300px" alt="Image no found"/>
+							</a>
+						</h2>
+						<% if user_signed_in? %>
+							<h2 align="center">
+								<font color="black"><%= article.texte %></font></br>
+							</h2>
+							<h2 align="right">
+								<font color="blue" size="3px">prix:<%= article.numero %>$</font>
+							</h2>
+							<h2 align="right">
+								<font color="green" size="3px">Annonce de <%= article.email %></font>
+							</h2>
+						<% else %>
+						<% end %>
+					</div>
+					</br>
+				<% end %>
+			<% else %>
+				<div align="left" >
+					<hr></hr>
+		  			<p style="padding-top:.33em"> Aucun document ne correspond aux termes de recherche spécifiés.  
+					</p>  
+					<p style="margin-top:1em">Suggestions :</p> 
+					<ul style="margin-left:1.3em;margin-bottom:2em">
+						<li>Regardez "Help" pour les fonctionnalités.</li>
+						<li>Vérifiez l’orthographe des termes de recherche.</li>
+						<li>Essayez d'autres mots.</li>
+						<li>Utilisez des mots clés plus généraux.</li>
+					</ul> 
+				</div>
+			<% end %>
+
+			<div align="center"><%= will_paginate @articles %></div>
+
+		</div>
+
+	</div>
+
+

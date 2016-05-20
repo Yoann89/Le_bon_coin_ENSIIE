@@ -6,22 +6,63 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
+	2.3.0
+	(plus précisément:ruby 2.3.0p0 (2015-12-25 revision 53290) [x86_64-linux])
 
 * System dependencies
+	besoin de Postgresql (ce que vous avez vraisemblablement)
 
 * Configuration
+	Ouvrir le fichier config/database.yml et éditer la configuration:
+	default: &default
+  		adapter: postgresql
+  		encoding: unicode
+  		pool: 5
+ 		username: "remplir avec le votre"
+  		password: "remplir avec le votre"
+  		host: localhost
+
 
 * Database creation
+	bundle exec rake db:create
+
 
 * Database initialization
+	bundle exec rake db:drop db:create db:migrate db:seed
+
 
 * How to run the test suite
+	bundle install
+	bundle exec rails server
 
 * Services (job queues, cache servers, search engines, etc.)
 
+
 * Deployment instructions
 
-* ...
+* Fonctionnalités :
+	-La page d'accueil affiche les articles sans prix ni commentaires.
+	-L'individu peut se créer un compte (via l'onglet Sign Up), il lui sera demandé un email et un password.
+	-Une fois connecté, l'individu pourra gérer différents aspects :
+		>Dans MySpace : Gestion des articles : Ajout/Suppression/Modification.
+		>Afin d'utiliser une image, il faut d'abord l'héberger sur un hébergeur d'image. La gestion d'images stockées directement sur le site n'est pas réalisée. 
+		>Dans MyProfile : Gestion de l'utilisateur où il peut modifier ses caractéristiques (nom, promo...)
+		>Dans Edit profile : Gestion de l'utilisateur où il peut modifier les caractéristiques permettant sa connexion (email, mot de passe).
+
+* Limites:
+	Les images fournies par le client qui veut poser une annonce doit héberger son image sur un hébergeur comme Google.
+	Pas de fonctionnalités concernant les annonces à caractère abusif.
+
+* Succès:
+	Gestion des accès.
+	Gestion des images avec url.
+	Gestion des recherche.
+	Moteur de recherche simple.
+	Pagination pour les recherches.
+	Dépot d'annonce.
+	Formulaire de promotion et formulaire en général.
+	Rubrique 'Help' et 'Aboutus' pour un site plus simple et plus fun.
+	Mise en page bootsrtap pour un rendu élégant.
 
 
 Please feel free to use a different markup language if you do not plan to run
